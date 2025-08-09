@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/blogdetail.css' %}">
+
+<section class="postbox-area pt-110 pb-80">
+  <div class="contner">
+      <div class="postbox-wrapper mb-115">
+
+        <!-- Blog Title -->
+        <h2 class="postbox-title fs-54 mb-4">{{ blog.title }}</h1>
+
+        <!-- Main Featured Image -->
+        {% if blog.image %}
+        <div class="blog-card-thumb mb-4">
+          <img 
+            class="w-100 rounded shadow-sm" 
+            src="{{ blog.image.url }}" 
+            alt="{{ blog.title }}" 
+            loading="lazy"
+          >
+        </div>
+        {% endif %}
+
+        <!-- Blog Content -->
+        <div class="postbox-details-text mb-45">
+          {{ blog.content|safe }}
+        </div>
+
+        <!-- Gallery -->
+        {% with blog.multi_images.all as images %}
+        {% if images %}
+        <div class="postbox-gallery mb-40">
+          <h2 class="postbox-title fs-34 mb-4">Gallery</h2>
+          <div class="gallery-grid">
+            {% for img in images %}
+            <div class="gallery-img-wrapper">
+              <img 
+                class="img-fluid rounded hover-zoom shadow-sm" 
+                src="{{ img.image.url }}" 
+                alt="{{ img.alt_text|default:blog.title }}" 
+                title="{{ img.alt_text }}" 
+                loading="lazy"
+              >
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        {% endwith %}
+
+      </div>
+  </div>
+</section>
+{% endblock %}

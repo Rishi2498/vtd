@@ -1,0 +1,215 @@
+/* ========== Layout ========== */
+.postbox-area {
+  padding-top: 110px;
+  padding-bottom: 80px;
+  background: #f9fafc;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* ========== Typography & Titles ========== */
+.postbox-title {
+  font-size: 48px;
+  color: #1a1a2e;
+  margin-bottom: 30px;
+  line-height: 1.2;
+  font-weight: 900;
+  text-transform: capitalize;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.fs-54 {
+  font-size: 54px;
+  font-weight: 900;
+  color: #121212;
+  line-height: 1.15;
+  margin-bottom: 35px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+}
+
+.fs-34 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #222;
+  border-left: 4px solid #0a0a0a;
+  padding-left: 12px;
+}
+
+/* ========== Images ========== */
+img {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+.blog-card-thumb img {
+   width: 100%;
+  max-height: 480px; /* Adjust max height */
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+
+/* ========== Blog Content ========== */
+.postbox-details-text {
+  font-size: 19px;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 50px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.postbox-details-text p {
+  margin-bottom: 1.7em;
+  color: #555;
+  font-weight: 400;
+}
+
+.postbox-details-text h2,
+.postbox-details-text h3,
+.postbox-details-text h4 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #111;
+  border-bottom: 2px solid #141414;
+  padding-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.postbox-details-text ul,
+.postbox-details-text ol {
+  padding-left: 25px;
+  margin-bottom: 1.8em;
+  color: #666;
+}
+
+.postbox-details-text li {
+  margin-bottom: 0.8em;
+  font-weight: 400;
+}
+
+/* ========== Gallery Section ========== */
+.postbox-gallery {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1.5px solid #ddd;
+}
+
+.postbox-gallery h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #333;
+  letter-spacing: 0.03em;
+}
+
+/* ========== Updated Gallery Grid ========== */
+.gallery-grid {
+   display: grid;
+  grid-template-columns: repeat(2, 1fr); /* exactly 2 columns */
+  gap: 16px; /* adjust gap between images */
+}
+
+.gallery-img-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* taller images */
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+.gallery-img-wrapper img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.35s ease;
+}
+
+/* Hover Effects */
+.gallery-img-wrapper:hover {
+  transform: scale(1.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.hover-zoom:hover {
+  transform: scale(1.12);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* ========== Smooth Scroll ========== */
+html {
+  scroll-behavior: smooth;
+}
+.contner{
+max-width: 1330px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+/* ========== Responsive ========== */
+@media (max-width: 1200px) {
+  .fs-54 {
+    font-size: 44px;
+  }
+  .fs-34 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .fs-54 {
+    font-size: 38px;
+  }
+  .fs-34 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fs-54 {
+    font-size: 32px;
+  }
+  .postbox-details-text {
+    font-size: 17px;
+  }
+  .blog-card-thumb img {
+    max-height: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .fs-54 {
+    font-size: 28px;
+  }
+  .fs-34 {
+    font-size: 24px;
+  }
+  .postbox-title {
+    font-size: 28px;
+  }
+  .postbox-details-text {
+    font-size: 15px;
+  }
+  .blog-card-thumb img {
+    max-height: 250px;
+  }
+}

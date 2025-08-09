@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/blogdetail.css' %}" />
+
+<section  style="background-image: url('{% static 'img/team/team-bg.png' %}'); background-size: cover; background-position: center;">
+  <div class="contner text-center">
+    <div class="fs-34" style="color: #f5f0f0ff; margin-bottom: 10px;">{{ service.category }}</div>
+    <h2 class="postbox-title" style="color: #1c1919;">{{ service.title }}</h1>
+  </div>
+</section>
+
+{% comment %} <section class="postbox-area"> {% endcomment %}
+  <div class="contner">
+    {% comment %} <div class="postbox-wrapper"> {% endcomment %}
+      
+
+      {% if service.image %}
+      <div class="blog-card-thumb" style="margin-bottom: 40px;">
+        <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid" />
+      </div>
+      {% endif %}
+      <div class="postbox-details-text">
+        {{ service.description|linebreaks }}
+
+        {% if service.points.all %}
+        <ul>
+          {% for point in service.points.all %}
+          <li>{{ point }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+
+      {% if service.multi_images.all %}
+      <section class="postbox-gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+          {% for img in service.multi_images.all %}
+          <div class="gallery-img-wrapper">
+            <img src="{{ img.image.url }}" alt="{{ img.alt_text }}" />
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <section class="benefits-section" style="margin-top: 60px;">
+        <h2 class="fs-34">Our Benefits</h2>
+        <p style="font-size: 18px; line-height: 1.8; color: #555; margin-top: 10px;">
+          You need the best person for the job, wherever they’re located. We provide support, payroll tax management, and compliance management for remote,
+          multi-state, multi-location, and international employees. We believe that the human essential to start any successful project and that this is where splendid
+          emotion between the re-generated company begins.
+        </p>
+      </section>
+    {% comment %} </div> {% endcomment %}
+  </div>
+{% comment %} </section> {% endcomment %}
+
+{% endblock %}

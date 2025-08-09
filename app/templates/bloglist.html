@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/bloglist.css' %}">
+
+<section class="page-section">
+
+  <!-- Breadcrumb Area -->
+  <div class="tp-breadcrumb-area tp-breadcrumb-ptb include-bg"
+    data-background="https://html.aqlova.com/agntix-prev/agntix/assets/img/about-us/about-us-4/about-us-4-bg.png">
+    <div class="container container-1330">
+      <div class="row justify-content-center">
+        <div class="col-xxl-12">
+          <div class="tp-blog-heading-wrap p-relative pb-130">
+            <span class="tp-section-subtitle pre tp_fade_anim">Blog Post</span>
+            <h3 class="tp-blog-title tp_fade_anim smooth">
+              Best blog <br>
+              <a href="#down">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
+                  <path d="M9.99999 1V19M9.99999 19L1 10M9.99999 19L19 10" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a> of the week...
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Cards -->
+  <div class="container py-5">
+    <div class="row blog-grid" id="down">
+      {% for blog in blogs %}
+      {% comment %} <div class="col-xl-4 col-md-6 col-sm-12 mb-4"> {% endcomment %}
+        <div class="blog-card">
+          {% if blog.image %}
+          <div class="blog-card-thumb">
+            <a href="{% url 'blog_detail' blog.slug %}">
+<img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+            </a>
+          </div>
+          {% endif %}
+
+          <div class="blog-card-content">
+            {% comment %} <div class="blog-card-user">
+              <div class="blog-author-thumb">
+                <img src="{{ blog.author.profile.image.url|default:'/static/img/default-user.jpg' }}" alt="{{ blog.author }}">
+              </div> {% endcomment %}
+              {% comment %} <div>
+                <strong>{{ blog.author }}</strong><br>
+                <small>{{ blog.author.get_full_name|default:"Administrator" }}</small>
+              </div> {% endcomment %}
+            {% comment %} </div> {% endcomment %}
+
+            {% comment %} <div class="blog-card-tag">
+              {{ blog.category.name|default:"Blog" }}
+            </div> {% endcomment %}
+
+            <h4 class="blog-card-title">
+              <a href="{% url 'blog_detail' blog.slug %}">{{ blog.title }}</a>
+            </h4>
+
+            <p>{{ blog.content|truncatewords:25 }}</p>
+
+            <div class="blog-card-meta d-flex justify-content-between align-items-center mt-3">
+              <small class="text-muted">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none">
+                  <path d="M9 4.2V9L12.2 10.6M17 9C17 13.4 13.4 17 9 17C4.6 17 1 13.4 1 9C1 4.6 4.6 1 9 1C13.4 1 17 4.6 17 9Z"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {{ blog.created_at|date:"F d, Y" }}
+              </small>
+
+              <div class="blog-card-btn">
+                <a href="{% url 'blog_detail' blog.slug %}">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% comment %} </div> {% endcomment %}
+      {% empty %}
+      <p class="text-center">No blog posts available.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+</section>
+{% endblock %}

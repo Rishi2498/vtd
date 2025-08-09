@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VDT Navigation</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation Header -->
+<header class="nav-header">
+  <nav class="navbar">
+
+    <!-- Logo (centered even on mobile) -->
+    <a href="{% url 'home' %}" class="navlogo">
+      <img src="{% static 'img/logo canva.png' %}" class="logo-img" alt="VDT Logo" />
+      <h1 class="logo-text"><b>VDT</b></h1>
+    </a>
+
+    <!-- Hamburger Icon (right side) -->
+    <button class="hamburger" id="mobile-menu-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation Container -->
+    <div class="nav-container" id="mobile-nav">
+
+      <!-- Left Nav Links -->
+      <ul class="nav-links nav-left">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'service_list' %}">Services</a></li>
+      </ul>
+
+      <!-- Right Nav Links + Button -->
+      <div class="nav-right-group">
+        <ul class="nav-links nav-right">
+          <li><a href="{% url 'project_list' %}">Projects</a></li>
+          <li><a href="{% url 'blog_list' %}">Blog</a></li>
+        </ul>
+        <div class="tp-header-8-btn">
+          <a class="tp-btn-border-2 st" href="{% url 'contact' %}">
+            GET STARTED
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+</header>
+
+<!-- Optional JavaScript to toggle mobile menu -->
+{% comment %} <script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const navContainer = document.getElementById('mobile-nav');
+
+  toggleBtn.addEventListener('click', () => {
+    toggleBtn.classList.toggle('open');
+    navContainer.classList.toggle('active');
+  });
+</script> {% endcomment %}
+
+</body>
+</html>

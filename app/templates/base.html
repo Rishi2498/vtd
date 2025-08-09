@@ -1,0 +1,234 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 🔹 META SEO TAGS -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{ meta.meta_title|default:"VDT - Creative Agency" }}</title>
+  <meta name="description" content="{{ meta.meta_description|default:'' }}" />
+  <meta name="keywords" content="{{ meta.keywords|default:'' }}" />
+
+  <!-- 🔹 OPEN GRAPH -->
+  <meta property="og:title" content="{{ meta.meta_title|default:'VDT - Creative Agency' }}" />
+  <meta property="og:description" content="{{ meta.meta_description|default:'' }}" />
+  {% if meta.og_image %}
+    <meta property="og:image" content="{{ meta.og_image }}" />
+  {% endif %}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+  <!-- 🔹 TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ meta.meta_title|default:'VDT - Creative Agency' }}" />
+  <meta name="twitter:description" content="{{ meta.meta_description|default:'' }}" />
+  {% if meta.og_image %}
+    <meta name="twitter:image" content="{{ meta.og_image }}" />
+  {% endif %}
+
+  <!-- 🔹 FAVICON -->
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+  <!-- 🔹 CSS STYLES -->
+  <link rel="stylesheet" href="{% static 'css/nav.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/atropos.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/font-awesome-pro.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/slick.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/spacing.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/swiper-bundle.css' %}"/>
+
+  <!-- Add your main stylesheet link(s) here -->
+
+  <!-- 🔹 ANALYTICS SCRIPTS -->
+  {% if meta.google_analytics_script %}
+    {{ meta.google_analytics_script|safe }}
+  {% endif %}
+
+  {% if meta.facebook_pixel_script %}
+    {{ meta.facebook_pixel_script|safe }}
+  {% endif %}
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  {% include 'navbar.html' %}
+
+  <!-- Main Content -->
+  {% block content %}
+  {% endblock %}
+
+  <!-- Cookie Consent Banner -->
+  {% if cookie_consent and cookie_consent.is_enabled %}
+    <div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background-color: #333; color: #fff; text-align: center; padding: 10px; z-index: 1000;">
+      <p style="margin: 0;">
+        {{ cookie_consent.message }}
+        {% if cookie_consent.policy_link %}
+          <a href="{{ cookie_consent.policy_link }}" style="color: #4dc1ff;" target="_blank" rel="noopener noreferrer">Learn more</a>
+        {% endif %}
+      </p>
+      <button onclick="acceptCookies()" style="margin-top: 5px; padding: 5px 15px; background: #4dc1ff; border: none; color: white; cursor: pointer;" aria-label="Accept cookies">
+        Accept
+      </button>
+    </div>
+
+    <script>
+      function acceptCookies() {
+        document.getElementById('cookie-banner').style.display = 'none';
+        document.cookie = "cookies_accepted=true; path=/; max-age=" + (60 * 60 * 24 * 365);
+      }
+    </script>
+  {% endif %}
+
+  <!-- Motion and Animation Libraries (always loaded) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+
+  <!-- Footer -->
+<footer class="main-footer">
+  <div class="footer-content">
+    <!-- Logo & Description -->
+    
+    <!-- Sitemap Links -->
+    <div class="footer-links">
+      <h3>Site Map</h3>
+      <div class="sitemap-grid">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'service_list' %}">Services</a></li>
+        </ul>
+        <ul> 
+          <li><a href="{% url 'project_list' %}">Projects</a></li>
+          <li><a href="{% url 'blog_list' %}">Blog</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+<div class="footer-logo">
+
+       <a href="{% url 'home' %}" class="logo">
+      <img src="{% static 'img/logo canva.png' %}" class="logo-img" alt="VDT Logo" />
+      <h1  class="logo-text"><b>VDT<b></h1>
+     <p >TECH BEYOND BOUNDRIES</p></a>
+</div>
+
+    <!-- Social Icons -->
+    <div class="footer-social">
+      <h3>Reach Us</h3>
+      <div class="social-icons">
+         <!-- Facebook -->
+  <a href="https://www.facebook.com/SuvarnaMandirbyRajsarepalli" class="nav-icon-link" aria-label="Facebook" target="_blank">
+    <svg aria-hidden="true" focusable="false" role="presentation" class="icon-facebook-b"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="black"
+         stroke-width="1.0"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         width="30" height="30">
+      <path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z" />
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/vignanatantradhara.techworks/" class="nav-icon-link" aria-label="Instagram" target="_blank"  style="margin-bottom: 3px;">
+    <svg aria-hidden="true" focusable="false" role="presentation" class="icon-instagram-b"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="black"
+         stroke-width="1.0"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         width="30" height="30">
+      <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+      <path d="M3 16V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"></path>
+      <path d="m17.5 6.51.01-.011"></path>
+    </svg>
+  </a>
+   <a href="https://api.whatsapp.com/send?phone=919491499910" target="_blank" aria-label="Chat With Us" class="whatsappbutton">
+    <svg xmlns="http://www.w3.org/2000/svg"width="30" height="30" viewBox="0 0 20 20.074" class="whatsapp-logos">
+      <g transform="translate(-426.525 -322.416)">
+        <path d="M537.461 442.133a2.6 2.6 0 0 0 .792.121 3.292 3.292 0 0 0 .491-.039 2.106 2.106 0 0 0 1.41-1 1.658 1.658 0 0 0 .1-1.026.694.694 0 0 0-.316-.22l-.105-.052c-.138-.069-1.153-.57-1.349-.642a.417.417 0 0 0-.573.141c-.119.179-.469.594-.611.756-.063.072-.114.11-.289.022-.035-.017-.079-.036-.135-.061a4.916 4.916 0 0 1-1.414-.894 5.756 5.756 0 0 1-1.066-1.328c-.069-.119-.031-.164.068-.263.063-.062.133-.148.2-.231l.1-.118a1.215 1.215 0 0 0 .184-.294l.027-.055a.471.471 0 0 0-.016-.443c-.031-.062-.227-.539-.384-.922l-.216-.524c-.156-.375-.341-.406-.5-.4h-.038c-.125-.006-.269-.007-.381-.007a.826.826 0 0 0-.6.281l-.037.04a2.29 2.29 0 0 0-.677 1.668 3.843 3.843 0 0 0 .821 2.091l.032.045a8.577 8.577 0 0 0 3.356 2.945 11.314 11.314 0 0 0 1.126.409z" transform="translate(-101.636 -108.015)" />
+        <path d="M440.2 324.745a7.945 7.945 0 0 0-12.526 9.544l-1.15 4.2 4.3-1.127a7.946 7.946 0 0 0 9.379-12.617zm-5.622 12.015a6.386 6.386 0 0 1-3.255-.891l-.278-.165-2.32.609.619-2.261-.181-.288a6.4 6.4 0 1 1 5.418 3v.113z" />
+      </g>
+    </svg>
+  </a>
+<a href="mailto:your@email.com" target="_blank" aria-label="Email" style="margin-bottom: 6px;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="#6F4F4B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+    <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+    <polyline points="2,4 12,13 22,4"></polyline>
+  </svg>
+</a>
+
+      </div>
+    </div>
+  </div>
+<div class="st-copyright-area st-copyright-ptb">
+                    {% comment %} <div class="container container-1320"> {% endcomment %}
+                        <div class="row align-items-center">
+                            <div class="col-lg-12">
+                                <div class="st-copyright-text text-center">
+                                    <span class="st-copyright-sub">Ready to work together?</span>
+                                    <h3 class="st-copyright-title"  ><a href="portfolio-col-3-light.html"style="color:#6F4F4B !important;">START PROJECT <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M1 1H13V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg></span>
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                  {% comment %} </div> {% endcomment %}
+                </div>
+                        </div>
+                    </div>
+                </div>
+                
+  <!-- Bottom Copyright -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 VDT. All rights reserved.</p>
+  </div>
+</footer>
+
+{% load static %}
+<script src="{% static 'js/nav.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap-bundle.js' %}"></script>
+<script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'js/plugin.js' %}"></script>
+<script src="{% static 'js/three.js' %}"></script>
+<script src="{% static 'js/slick.js' %}"></script>
+<script src="{% static 'js/scroll-magic.js' %}"></script>
+<script src="{% static 'js/hover-effect.umd.js' %}"></script>
+<script src="{% static 'js/magnific-popup.js' %}"></script>
+<script src="{% static 'js/parallax-slider.js' %}"></script>
+<script src="{% static 'js/nice-select.js' %}"></script>
+<script src="{% static 'js/purecounter.js' %}"></script>
+<script src="{% static 'js/isotope-pkgd.js' %}"></script>
+<script src="{% static 'js/imagesloaded-pkgd.js' %}"></script>
+<script src="{% static 'js/ajax-form.js' %}"></script>
+<script src="{% static 'js/Observer.min.js' %}"></script>
+<script src="{% static 'js/splitting.min.js' %}"></script>
+<script src="{% static 'js/webgl.js' %}"></script>
+<script src="{% static 'js/parallax-scroll.js' %}"></script>
+<script src="{% static 'js/atropos.js' %}"></script>
+<script src="{% static 'js/slider-active.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/tp-cursor.js' %}"></script>
+<script src="{% static 'js/portfolio-slider-1.js' %}"></script>
+
+<!-- If the following are true ES6 modules, use `type="module"` -->
+<script type="module" src="{% static 'js/distortion-img.js' %}"></script>
+<script type="module" src="{% static 'js/skew-slider/index.js' %}"></script>
+<script type="module" src="{% static 'js/img-revel/index.js' %}"></script>
+
+</body>
+</html>

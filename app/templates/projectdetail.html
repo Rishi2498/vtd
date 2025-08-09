@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/blogdetail.css' %}">
+
+<section class="postbox-area pt-110 pb-80">
+  <div class="contner">
+    <div class="postbox-wrapper mb-115">
+
+      <!-- Project Title -->
+      <h2 class="postbox-title fs-54 mb-4">{{ project.title }}</h1>
+
+      <!-- Main Featured Image -->
+      {% if project.image %}
+      <div class="blog-card-thumb mb-4">
+        <img 
+          class="w-100 rounded shadow-sm" 
+          src="{{ project.image.url }}" 
+          alt="{{ project.title }}" 
+          loading="lazy"
+        >
+      </div>
+      {% endif %}
+
+      <!-- Project Description -->
+      <div class="postbox-details-text mb-45">
+        {% if project.description %}
+          <p>{{ project.description|linebreaksbr }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Technologies Used -->
+      {% if project.technologies_used %}
+      <div class="postbox-details-text mb-45">
+        <h2 class="fs-34">Technologies Used</h2>
+        <p>{{ project.technologies_used }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Project Link -->
+      {% if project.project_url %}
+      <div class="postbox-details-text mb-45">
+        <a 
+          href="{{ project.project_url }}" 
+          target="_blank" 
+          class="btn project-btn"
+        >
+          Visit Project
+        </a>
+      </div>
+      {% endif %}
+
+      <!-- Project Gallery -->
+      {% with project.multi_images.all as images %}
+      {% if images %}
+      <div class="postbox-gallery mb-40">
+        <h2 class="fs-34">Project Gallery</h2>
+        <div class="gallery-grid">
+          {% for img in images %}
+          <div class="gallery-img-wrapper">
+            <img 
+              class="img-fluid rounded hover-zoom shadow-sm" 
+              src="{{ img.image.url }}" 
+              alt="{{ img.alt_text|default:project.title }}" 
+              title="{{ img.alt_text }}" 
+              loading="lazy"
+            >
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% endwith %}
+
+    </div>
+  </div>
+</section>
+{% endblock %}

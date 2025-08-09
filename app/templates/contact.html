@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+
+  <!-- === Hero Section (Unchanged) === -->
+  <div class="tp-contact-us-ptb p-relative">
+    <!-- your hero section stays here -->
+  </div>
+
+  <!-- === Contact Two-Column Section === -->
+  <section class="contact-wrapper">
+    <div class="contact-box">
+
+      <!-- Left Side: Info -->
+      <div class="contact-info">
+<div class="contact-logo">
+
+       <a href="{% url 'home' %}" class="logo">
+      <img src="{% static 'img/logo canva.png' %}" class="contact-logoimg" alt="VDT Logo" />
+      <h1  class="contact-logotext"><b>VDT<b></h1>
+    </a>
+      <a href="{% url 'home' %}" class="contactlogo">
+     <p >TECH BEYOND BOUNDRIES</p></a>
+</div>        <h2>Contact Us</h2>
+        <p>We’re happy to hear from you. Get in touch and we’ll respond within 24 hours.</p>
+
+        <div class="info-item">
+          <strong>Phone:</strong>
+          <p><a href="tel:+919491499910">+91 9491499910</a></p>
+        </div>
+
+        <div class="info-item">
+          <strong>Email:</strong>
+          <p><a href="mailto:vignanatantradhara@gmail.com">vignanatantradhara@gmail.com</a></p>
+        </div>
+      </div>
+
+      <!-- Right Side: Form -->
+      <div class="contact-form-container">
+        <h2 class="form-title">Send Us a Message</h2>
+         <!-- Display success or error messages -->
+    {% if messages %}
+    <div class="alert-messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+        <form method="post" class="contact-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- === Support Section (Unchanged) === -->
+  <div class="cn-contactform-support-area mb-140">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-10">
+          <div class="cn-contactform-support-bg d-flex align-items-center justify-content-center"
+            data-background="https://html.aqlova.com/agntix-prev/agntix/assets/img/contact/contact-us/contact-us-shape.png">
+            <div class="cn-contactform-support-text text-center">
+              <span>you can contact one of our social media platform directly below. We aim to respond within 24 hours.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

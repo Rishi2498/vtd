@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ meta.meta_title|default:"Startup Agency" }}</title>
+  <meta name="description" content="{{ meta.meta_description }}">
+  <meta name="keywords" content="{{ meta.keywords }}">
+
+  {% if meta.google_analytics_script %}
+    {{ meta.google_analytics_script|safe }}
+  {% endif %}
+
+  {% if meta.facebook_pixel_script %}
+    {{ meta.facebook_pixel_script|safe }}
+  {% endif %}
+
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+{% if banners %}
+  <section id="banners" class="banner-section">
+    <div class="banner-carousel">
+      {% for banner in banners %}
+        <div class="banner-slide">
+          <img src="{{ banner.image.url }}" alt="{{ banner.title }}">
+          <div class="banner-text">
+            <h2>{{ banner.title }}</h2>
+            {% if banner.subtitle %}
+              <p>{{ banner.subtitle }}</p>
+            {% endif %}
+            {% if banner.link %}
+              <a href="{{ banner.link }}" class="btn">Learn More</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% comment %} <header class="main-header">
+  <div class="hero" data-aos="fade-up">
+    <h1>We’re Creative Startup Agency</h1>
+    <p>Crafting digital solutions that elevate your business.</p>
+    <a href="#services" class="cta-btn">Our Services</a>
+  </div>
+</header> {% endcomment %}
+<section id="services" class="st-service-area st-service-ptb pt-160 .st-service-item-slider::before" data-bg-color="#151515">
+  {% comment %} <div class="container container-1320"> {% endcomment %}
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="st-service-heading mb-70 tp_fade_anim" data-delay=".3">
+          {% comment %} <span class="tp-section-subtitle st">// OUR SERVICES</span> {% endcomment %}
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="st-service-heading mb-70">
+          <h3 class="tp-section-title-playfair mb-20 tp_fade_anim" data-delay=".3">
+            SERVICE WE’RE <br> ALWAYS <span style="colour:rgba(69, 48, 48, 0.6) !important">PROVIDE</span>
+          </h3>  
+          <div style="colour:brown !important">
+            <p>Agntix power of our 8+ years of experience. We build excellence works. <br>
+              That will help you to grow your business products.</p>
+          </div>
+        </div>
+      </div>
+    {% comment %} </div> {% endcomment %}
+
+{% for service in services %}
+  <div class="st-service-item fix">
+    <div class="row gx-0">
+      <div class="col-lg-6">
+        <div class="st-service-item-wrap d-flex align-items-center">
+          <div class="st-service-item-thumb"> 
+            <a href="{% url 'service_detail' service.slug %}">
+              {% if service.image %}
+                <div class="st-service-item-image">
+                  <img class="service-image" src="{{ service.image.url }}" alt="{{ service.title }}">
+                </div>
+              {% else %}
+                <div class="st-service-item-image">
+                  <img class="service-image" src="{% static 'images/default-service.jpg' %}" alt="{{ service.title }}">
+                </div>
+              {% endif %}
+            </a>
+
+          </div>
+
+          <div class="st-service-item-text">
+            <h4 class="st-service-item-title">
+              <a class="tp-line-white" href="{% url 'service_detail' service.slug %}">
+                {{ service.title }}
+              </a>
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="st-service-item-wrapper p-relative fix">
+          <div class="st-service-item-btn">
+            <a href="{% url 'service_detail' service.slug %}">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M1 1H13V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+          </div>
+          {% comment %} <div class="st-service-item-slider">
+            <div class="st-service-item-tags">
+              {% for feature in service.features.all %}
+                <span>{{ feature.name }}</span>
+              {% empty %}
+                <span>{{ service.description|truncatechars:40 }}</span>
+              {% endfor %}
+            </div>
+          </div> {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% empty %}
+  <p class="text-light">No services available at the moment.</p>
+{% endfor %}
+
+<div class="row mt-5 text-center">
+  <div class="col-12">
+    <a href="{% url 'service_list' %}" class="btn btn-style-1">View All Services</a>
+  </div>
+</div>
+
+
+<!-- portfolio area start -->
+<div class="st-portfolio-area st-portfolio-ptb p-relative">
+  {% comment %} <div class="container container-1320"> {% endcomment %}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="st-portfolio-heading text-center mb-200">
+          <h3 class="tp-section-title-playfair st-portfolio-title mb-20">
+            WE ‘VE DONE <br> PERFECT <span>WORKS</span>
+          </h3>
+        </div>
+      </div>
+    {% comment %} </div> {% endcomment %}
+  </div>
+
+  <div class="container container-1830">
+    <div class="row">
+      {% for project in projects|slice:3 %}
+      <div class="col-xl-4 col-md-6">
+        <div class="st-portfolio-item st-portfolio-item-{{ forloop.counter }} z-index-1 mb-30">
+          <div class="st-portfolio-item-thumb">
+            <a href="{% url 'project_detail' project.slug %}">
+              <img src="{{ project.image.url }}" alt="{{ project.title }}">
+            </a>
+          </div>q
+          <div class="st-portfolio-item-content">
+            <h4 class="st-portfolio-item-title">
+              <a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a>
+            </h4> 6
+
+
+            <div class="st-portfolio-item-btn">
+              <a class="tp-line-black" href="{% url 'project_detail' project.slug %}">
+                View case study
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <p>No projects available right now.</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      <div class="col-12 text-center mt-40">
+        <a href="{% url 'project_list' %}" class="btn">View All Projects</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- blog area start -->
+<div class="st-blog-area st-blog-ptb pb-110">
+  {% comment %} <div class="container container-1320"> {% endcomment %}
+    <div class="row align-items-end">
+      <div class="col-lg-8">
+        <div class="st-blog-heading mb-70">
+          {% comment %} <span class="tp-section-subtitle st tp_fade_anim" data-delay=".3">// OUR BLOG POST</span> {% endcomment %}
+          <h3 class="tp-section-title-playfair mb-20 tp_fade_anim" data-delay=".5">
+            LATEST NEWS <br> FROM <span>STARTUP</span>
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="st-blog-text mb-70 tp_fade_anim" data-delay=".5">
+          <p>The place that we share everything related to <br> design trends, tips and more.</p>
+          <a class="tp-btn-border-2 st" href="{% url 'blog_list' %}">
+            VIEW ALL NEWS
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      {% comment %} </div> {% endcomment %}
+    </div>
+
+    <div class="row">
+      {% for blog in latest_blogs|slice:3 %}
+        <div class="col-lg-4 col-md-6">
+          <div class="st-blog-item mb-30" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:'1' }}00">
+            <div class="st-blog-item-thumb">
+              <a href="{% url 'blog_detail' blog.slug %}">
+                {% if blog.image %}
+          <div class="blog-card-thumb">
+            <a href="{% url 'blog_detail' blog.slug %}">
+<img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+            </a>
+          </div>
+          {% endif %}
+              </a> 
+            </div>
+            <div class="st-blog-item-content">
+              <h3 class="st-blog-item-title">
+                <a class="tp-line-black" href="{% url 'blog_detail' blog.slug %}">
+                  {{ blog.title|truncatewords:8 }}
+                </a>
+              </h3>
+              <div class="st-blog-item-tags d-flex align-items-center">
+                <span>{{ blog.category.name }}</span>
+                <div class="st-blog-item-tags-devide"></div>
+                {% comment %} <p>{{ blog.created_at|date:"M d, Y" }}</p> {% endcomment %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12 text-center">
+          <p>No blog posts available.</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+              <!-- choose us area stat -->
+                <div class="st-choose-area p-relative tp-bounce-trigger st-choose-ptb st-choose-bg pb-160">
+                    {% comment %} <div class="container container-1320"> {% endcomment %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="st-choose-heading mb-70">
+                                    {% comment %} <span class="tp-section-subtitle st tp_fade_anim" data-delay=".3">// WHY CHOOSE US</span> {% endcomment %}
+                                    <h3 class="tp-section-title-playfair mb-20 tp_fade_anim" data-delay=".5">WHY SHOULD YOU <br>
+                                        <span>CHOOOSE US</span>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="st-choose-btn text-start text-lg-end mt-25 mb-30">
+                                    <a class="tp-btn-border-2 st" href="service-2-dark.html">
+                                        KNOW MORE
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                <path d="M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="st-choose-list mb-30">
+                                    <ul>
+                                        <li>+ Web interaction design</li>
+                                        <li>+ Seamless Integration</li>
+                                        <li>+ Generation Technology</li>
+                                        <li>+ Facility Approach</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="st-choose-text-wrap mb-30">
+                                    <p>Choosing the right marketing agency can make a big <br>
+                                        difference. With so many options available, it’s essential <br>
+                                        to find an agency that understands the unique needs <br>
+                                        of new businesses. This article highlights some of <br>
+                                        the top startup marketing agencies that can help your <br>
+                                        business grow and succeed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% comment %} <div class="row">
+                            <div class="col-xl-4">
+                                <div class="st-choose-shape tp-bounce">
+                                    <img src="assets/img/home-12/testimonial/testimonial-shape.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xl-8">
+                                <div class="st-choose-thumb mt-40 text-start text-lg-end">
+                                    <img data-speed=".8" src="assets/img/home-12/chose/choose-us-thumb.jpg" alt="">
+                                </div>
+                            </div>
+                        </div> {% endcomment %}
+                    
+                </div>
+                <!-- choose us area end -->
+  <!-- cta area start -->
+                <div class="st-cta-area st-cta-ptb p-relative pb-120">
+                    <div class="st-cta-bg-circle" data-background="assets/img/home-12/cta/cta-bg.jpg">
+                    </div>
+                    {% comment %} <div class="container container-1320"> {% endcomment %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="st-cta-wrapper text-center z-index-1">
+                                    <h3 class="tp-section-title-playfair mb-40 tp_fade_anim" data-delay=".3">LET’S WORK <br> <span>TOGETHER</span></h3>
+                                    <a class="tp-btn-border-2 st" href="{% url 'contact' %}">
+                                        CONTACT US
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                                <path d="M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% comment %} </div> {% endcomment %}
+                </div>
+                <!-- cta area end -->
+
+{% if cookie_consent and cookie_consent.is_enabled %}
+  <div id="cookie-banner">
+    <p>{{ cookie_consent.message }}
+      <a href="{{ cookie_consent.policy_link }}">Learn more</a>
+    </p>
+    <button onclick="acceptCookies()">Accept</button>
+  </div>
+  <script>
+    function acceptCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      document.cookie = "cookies_accepted=true; path=/";
+    }
+    window.addEventListener("DOMContentLoaded", function () {
+      if (document.cookie.includes("cookies_accepted=true")) {
+        const banner = document.getElementById("cookie-banner");
+        if (banner) banner.style.display = "none";
+      }
+    });
+  </script>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once: false, duration: 1000 });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.from(".hero h1", { y: 50, opacity: 0, duration: 1, delay: 0.3 });
+  gsap.from(".hero p", { y: 30, opacity: 0, duration: 1, delay: 0.6 });
+  gsap.from(".hero .cta-btn", { scale: 0.8, opacity: 0, duration: 0.8, delay: 0.9 });
+
+  gsap.utils.toArray(".service-card").forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 90%",
+        toggleActions: "play none none reset"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.6,
+      delay: i * 0.1
+    });
+  });
+
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      gsap.to(card, { scale: 1.02, duration: 0.3 });
+    });
+    card.addEventListener("mouseleave", () => {
+      gsap.to(card, { scale: 1, duration: 0.3 });
+    });
+  });
+</script>
+
+</body>
+</html>
+{% endblock %}
