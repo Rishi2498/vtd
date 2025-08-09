@@ -93,13 +93,13 @@ WSGI_APPLICATION = 'vdtsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', 
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vtddb',
-        'USER': 'postgres',
-        'PASSWORD': 'amma',
-        'HOST': 'localhost',
-        'PORT':'5432',
-}
+        'USER': 'vtddb_user',
+        'PASSWORD': 'AKhy1s0XooUR1jAebZKndSugRiu5s3DH',
+        'HOST': 'dpg-d2bpof7diees73f0of90-a.oregon-postgres.render.com',
+        'PORT': '5432',  # Default PostgreSQL port unless specified otherwise
+    }
 }
 
 # Password validation
