@@ -87,7 +87,6 @@
                     {{ service.title }}
                   </a>
                 </h4>
-                <p>{{ service.description|truncatechars:120|linebreaks }}</p>
 
                 <div class="tp-service-btn mt-3">
                   <a href="{% url 'service_detail' service.slug %}" class="tp-btn-black btn-red-bg">
