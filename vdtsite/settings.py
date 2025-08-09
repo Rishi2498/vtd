@@ -163,11 +163,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'dattarishikesh2498@gmail.com'
-EMAIL_HOST_PASSWORD = 'oohv peol mpwr dcau'
-DEFAULT_FROM_EMAIL = 'dattarishikesh2498@gmail.com'
-# Default sender
-DEFAULT_FROM_EMAIL = 'dattarishikesh2498@gmail.com'
-
+EMAIL_HOST_USER = 'vignanatantradhara@gmail.com'
+EMAIL_HOST_PASSWORD = 'dgpr yeep ifde awxw'
+DEFAULT_FROM_EMAIL = 'vignanatantradhara@gmail.com'
 # Where contact form emails should be sent
-CONTACT_EMAIL = 'dattarishikesh2498@gmail.com'
+CONTACT_EMAIL = 'vignanatantradhara@gmail.com'
