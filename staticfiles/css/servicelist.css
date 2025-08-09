@@ -1,0 +1,151 @@
+body {
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffff; /* deep graphite blue */
+  color: #e0f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+.page-section {
+  padding: 80px 20px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.section-header h1 {
+  font-size: 2.6rem;
+  text-align: center;
+  color: #00e5c5;
+  margin-bottom: 50px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* === Services Grid === */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 36px;
+}
+
+/* === Service Card === */
+.service-card {
+  background-color: #121e22; /* dark card */
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0, 191, 174, 0.06);
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+.tp-service-thumb img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.tp-service-item {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.tp-service-number span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #00e5c5;
+}
+
+.tp-service-thumb img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.tp-service-btn .tp-btn-black {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .tp-service-number {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .tp-service-thumb {
+    margin-top: 20px;
+  }
+}
+
+
+.service-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 14px 32px rgba(0, 191, 174, 0.15);
+  border-color: #00bfae;
+}
+
+/* === Service Icon === */
+.service-icon {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 22px;
+  filter: brightness(85%);
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  color: #00e5c5;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.service-card p {
+  font-size: 1.05rem;
+  color: #b2dfdb;
+  line-height: 1.5;
+}
+
+/* === Add Service Card Style === */
+.add-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px dashed #00bfae;
+  background-color: #0f2a2e;
+  cursor: pointer;
+  padding: 40px 20px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.add-card:hover {
+  border-color: #26c6da;
+  background-color: #122e32;
+  transform: scale(1.03);
+}
+
+.add-icon {
+  font-size: 3rem;
+  color: #26c6da;
+  margin-bottom: 12px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .section-header h1 {
+    font-size: 2rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+  }
+}

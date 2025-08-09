@@ -1,0 +1,395 @@
+/* General Styles */
+html {
+  scroll-behavior: smooth;
+  /* overflow-y: scroll; */
+      margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+/* General Banner Section Styling */
+#banners {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #f5f5f5;
+  /* padding: 50px 0; */
+  /* margin-top: 10px; */
+}
+
+.banner-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.banner-slide {
+  flex: 0 0 100%;
+  position: relative;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: flex-end; /* ⬅️ Align items to the bottom */  
+  justify-content: center;
+  height: 600px;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  text-align: center;
+}
+
+.banner-slide img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+/* Text Overlay */
+.banner-text {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+  font-family: 'Poppins';
+
+}
+
+.banner-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.banner-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+  font-family: 'Poppins';
+}
+
+.banner-text .btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #ff5722;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.banner-text .btn:hover {
+  background-color: #e64a19;
+}
+
+/* Optional Responsive Styling */
+@media (max-width: 768px) {
+  .banner-text h2 {
+    font-size: 2rem;
+  }
+
+  .banner-text p {
+    font-size: 1rem;
+  }
+
+  .banner-slide {
+    height: 300px;
+  }
+}
+
+body {
+  /* background: linear-gradient(135deg, #ffffff, #e0f7fa); Soft gradient from white to a light teal */
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  color: #495d61; /* A neutral dark grey color */
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 100vh;
+  background-attachment: fixed; /* Keeps the background fixed when scrolling */
+}
+
+/* Header / Hero */
+.main-header {
+  /* background: linear-gradient(120deg, #d5d5d5, #bdcacc); Fresh gradient to create a vibrant yet elegant tone */
+  background-color: #f9f4e8;
+  color: #fff;
+  padding: 100px 20px 60px;
+  text-align: center;
+  /* border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px; */
+  /* box-shadow: 0 6px 18px rgba(0, 191, 174, 0.15); */
+}
+
+.hero h1 {
+  font-weight: 800;
+  font-size: 3.4rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+}
+
+.hero p {
+  font-size: 1.4rem;
+  max-width: 720px;
+  margin: 0 auto 38px;
+  color: #b2dfdb;
+}
+
+/* Buttons */
+.cta-btn,
+.btn {
+  background: #6F4F4B; /* Elegant gradient for buttons */
+  color: #fff;
+  padding: 14px 34px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+/* a{
+  color: rgb(10, 10, 10) !important;
+} */
+.cta-btn:hover,
+.btn:hover {
+  background: #ffffff;
+  transform: translateY(-2px) scale(1.045);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+.ST{
+  color: brown;
+}
+
+/* Section */
+.section-wrapper {
+  padding: 70px 5vw;
+  max-width: 1240px;
+  margin: 0 auto 64px;
+}
+
+#services, #project, #blog {
+  /* background: linear-gradient(120deg, #ffffff, #a7c6c7); Soft linear gradient for a calm look */
+  background: #fffaed !important;
+  /* border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  margin-top: 10px;
+  padding: 60px 30px; */
+  box-shadow: 0 3px 20px rgba(179, 194, 193, 0.05);
+}
+
+#blog {
+  background: linear-gradient(135deg, #182726, #2c3e50); /* Darker gradient for blog to make it stand out */
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 48px;
+  text-align: center;
+  color: #00e5c5;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #ffffff; /* White cards for a clean, minimalist style */
+  color: #495d61; /* Neutral text color for easy reading */
+  border-radius: 20px;
+  padding: 28px 24px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 191, 174, 0.1); /* Subtle shadow for depth */
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(0, 191, 174, 0.15);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+
+.icon-img {
+  width: 54px;
+  height: 54px;
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  font-size: 1.45rem;
+  color: #00e5c5;
+  margin-bottom: 14px;
+}
+
+.card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card h3 a:hover {
+  color: #26c6da;
+  text-decoration: underline;
+}
+
+.card p {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #495d61; /* Slightly darker text for readability */
+}
+
+.view-all {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* Cookie Banner */
+#cookie-banner {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: rgba(0, 0, 0, 0.93);
+  color: #fff;
+  padding: 18px 28px;
+  border-radius: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  font-size: 1rem;
+  z-index: 9999;
+  animation: fadeInFixed 0.8s ease-out;
+  box-shadow: 0 6px 30px rgba(0, 150, 136, 0.2);
+}
+
+#cookie-banner p {
+  margin: 0;
+}
+
+#cookie-banner a {
+  color: #26c6da;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+#cookie-banner button {
+  background: linear-gradient(90deg, #00bfae, #26c6da);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.25s ease;
+}
+
+#cookie-banner button:hover {
+  background: #00796b;
+}
+
+@keyframes fadeInFixed {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .main-header {
+    padding: 60px 10px 36px;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .card-grid {
+    gap: 16px;
+  }
+
+  .section-wrapper {
+    padding: 40px 2vw;
+  }
+
+  #cookie-banner {
+    flex-direction: column;
+    right: 16px;
+    bottom: 16px;
+    padding: 16px;
+    gap: 12px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Styling the service image */
+.service-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-width: 350px;
+  max-height: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 191, 174, 0.2); /* Subtle shadow for elegance */
+}
+
+/* Optional: Controls the container size */
+.st-service-item-image {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Optional: Styling the service item */
+.st-service-item-thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+/* Force same size for both blog and project cards */
+.st-blog-item,
+.st-portfolio-item {
+  min-height: 250px; /* Adjust this value based on your project card height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin-left: 5%;
+}
+
+/* Optional: Ensure images inside both cards are the same height */
+.st-blog-item-thumb img,
+.st-portfolio-item-thumb img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}

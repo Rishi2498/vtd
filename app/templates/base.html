@@ -30,7 +30,7 @@
   {% endif %}
 
   <!-- 🔹 FAVICON -->
-  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+  <link rel="icon" href="{% static 'img/logo canva.png' %}" type="image/x-icon" />
 
   <!-- 🔹 CSS STYLES -->
   <link rel="stylesheet" href="{% static 'css/nav.css' %}" />
@@ -177,7 +177,7 @@
                             <div class="col-lg-12">
                                 <div class="st-copyright-text text-center">
                                     <span class="st-copyright-sub">Ready to work together?</span>
-                                    <h3 class="st-copyright-title"  ><a href="portfolio-col-3-light.html"style="color:#6F4F4B !important;">START PROJECT <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <h3 class="st-copyright-title"  ><a href="{% url 'contact' %}"style="color:#6F4F4B !important;">START PROJECT <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M1 1H13V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg></span>

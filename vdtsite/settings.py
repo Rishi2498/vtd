@@ -93,13 +93,13 @@ WSGI_APPLICATION = 'vdtsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', 
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vtddb',
-        'USER': 'postgres',
-        'PASSWORD': 'amma',
-        'HOST': 'localhost',
-        'PORT':'5432',
-}
+        'USER': 'vtddb_user',
+        'PASSWORD': 'AKhy1s0XooUR1jAebZKndSugRiu5s3DH',
+        'HOST': 'dpg-d2bpof7diees73f0of90-a.oregon-postgres.render.com',
+        'PORT': '5432',  # Default PostgreSQL port unless specified otherwise
+    }
 }
 
 # Password validation
@@ -163,11 +163,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'dattarishikesh2498@gmail.com'
-EMAIL_HOST_PASSWORD = 'oohv peol mpwr dcau'
-DEFAULT_FROM_EMAIL = 'dattarishikesh2498@gmail.com'
-# Default sender
-DEFAULT_FROM_EMAIL = 'dattarishikesh2498@gmail.com'
-
+EMAIL_HOST_USER = 'vignanatantradhara@gmail.com'
+EMAIL_HOST_PASSWORD = 'dgpr yeep ifde awxw'
+DEFAULT_FROM_EMAIL = 'vignanatantradhara@gmail.com'
 # Where contact form emails should be sent
-CONTACT_EMAIL = 'dattarishikesh2498@gmail.com'
+CONTACT_EMAIL = 'vignanatantradhara@gmail.com'

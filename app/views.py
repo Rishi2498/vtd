@@ -43,8 +43,8 @@ def contact(request):
         Name: {lead.name}
         Email: {lead.email}
         Phone: {lead.phone}
-        Message:
-        {lead.message}
+        Service:{lead.service}
+        Message:{lead.message}
         """
         from_email = settings.DEFAULT_FROM_EMAIL
         recipient_list = [settings.CONTACT_EMAIL]  # Set in settings.py

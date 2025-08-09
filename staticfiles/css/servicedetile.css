@@ -1,0 +1,146 @@
+/* Reset / base */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.contner {
+  max-width: 1330px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Hero section */
+.service-hero {
+  background-size: cover;
+  background-position: center;
+  padding: 120px 0 80px;
+  text-align: center;
+  color: #fff;
+}
+
+.service-hero .category {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffc107;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.service-hero .service-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Description section */
+.service-description-section {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.description-text {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+.service-points {
+  list-style: none;
+  padding-left: 0;
+}
+
+.service-points li {
+  position: relative;
+  padding-left: 25px;
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.service-points li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Main image */
+.main-service-image {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.main-service-image img {
+  width: 100%;
+  max-width: 960px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* Gallery */
+.service-gallery {
+  padding: 60px 0;
+  background-color: #fff;
+}
+
+.gallery-heading {
+  font-size: 32px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.gallery-img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.02);
+}
+
+/* Benefits section */
+.benefits-section {
+  padding: 80px 0;
+  background-color: #f0f4f8;
+  text-align: center;
+}
+
+.benefits-heading {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.benefits-text {
+  font-size: 18px;
+  color: #555;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-hero .service-title {
+    font-size: 32px;
+  }
+
+  .gallery-heading,
+  .benefits-heading {
+    font-size: 26px;
+  }
+
+  .description-text,
+  .benefits-text {
+    font-size: 16px;
+  }
+}
