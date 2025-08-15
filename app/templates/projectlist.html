@@ -1,72 +1,83 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/bloglist.css' %}">
 
+<section class="page-section">
 
-  <link rel="stylesheet" href="{% static 'css/project.css' %}">
-
-{% comment %} <section class="projects-section">
-  <h1>Our Projects</h1>
-  <div class="projects-grid">
-    {% for project in projects %}
-      <div class="project-card">
-        {% if project.image %}
-          <div class="project-image-wrapper">
-            <img src="{{ project.image.url }}" alt="{{ project.title|default:'Project Image' }}">
+  <!-- Breadcrumb Area -->
+  <div class="tp-breadcrumb-area tp-breadcrumb-ptb include-bg"
+       style="background-image: url('{% static 'img/projects/projects-bg.png' %}');">
+    <div class="container container-1330">
+      <div class="row justify-content-center">
+        <div class="col-xxl-10 text-center">
+          <div class="tp-blog-heading-wrap p-relative pb-130">
+            <span class="tp-section-subtitle pre tp_fade_anim">Projects</span>
+            <h3 class="tp-blog-title tp_fade_anim smooth">
+              Featured Projects <br>
+              <a href="#down" class="scroll-down-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
+                  <path d="M9.99999 1V19M9.99999 19L1 10M9.99999 19L19 10"
+                        stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <br><small class="text-muted">worth exploring...</small>
+            </h3>
           </div>
-        {% endif %}
-        <div class="project-info">
-          <h3>
-            <a href="{% url 'project_detail' project.slug %}">
-              {{ project.title }}
-            </a>
-          </h3>
-          <p>{{ project.short_description|truncatechars:120 }}</p>
-          {% if project.technologies_used %}
-            <p class="tech"><strong>Technologies:</strong> {{ project.technologies_used }}</p>
-          {% endif %}
-          {% if project.project_url %}
-            <a class="live-btn" href="{{ project.project_url }}" target="_blank" rel="noopener noreferrer">
-              Visit Live
-            </a>
-          {% endif %}
-        </div>
-      </div>
-    {% empty %}
-      <p>No projects found.</p>
-    {% endfor %}
-  </div>
-</section> {% endcomment %}
-<!-- PERSPECTIVE PORTFOLIO -->
-<div class="tp-perspective-area">
-  <div class="container container-1685">
-    <div class="row">
-      <div class="col-xl-12">
-        <div class="tp-perspective-slider">
-          {% for project in projects %}
-            <div class="tp-perspective-main">
-              <div class="tp-perspective-inner">
-                <div class="tp-perspective-image" data-background="{{ project.image.url }}">
-                  <div class="tp-perspective-content">
-                    <span class="tp-perspective-category tp_reveal_anim">
-                      {{ project.category|default:"Project" }}
-                    </span>
-                    <h1 class="tp-perspective-title tp_reveal_anim not-hide-cursor" data-cursor="View<br>Demo">
-                      <a class="cursor-hide" href="{% url 'project_detail' project.slug %}">
-                        {{ project.title }}
-                      </a>
-                    </h1>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {% empty %}
-            <p class="text-danger">No projects available right now.</p>
-          {% endfor %}
         </div>
       </div>
     </div>
   </div>
-</div>
 
+  <!-- Projects Section -->
+  <div class="container py-5" id="down">
+    <div class="row g-4">
+      {% for project in projects %}
+        <div class="col-md-6 col-lg-4">
+          <div class="blog-card h-100 shadow-sm rounded overflow-hidden">
+
+            {% if project.image %}
+              <div class="blog-card-thumb">
+                <a href="{% url 'project_detail' project.slug %}">
+                  <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid w-100">
+                </a>
+              </div>
+            {% endif %}
+
+            <div class="blog-card-content p-3 d-flex flex-column justify-content-between h-100">
+              <div>
+                <h4 class="blog-card-title mb-2">
+                  <a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a>
+                </h4>
+
+                <p class="text-secondary mb-3">{{ project.short_description|truncatewords:25 }}</p>
+
+                {% if project.technologies_used %}
+                  <p class="text-muted small mb-2">
+                    <strong>Tech:</strong> {{ project.technologies_used }}
+                  </p>
+                {% endif %}
+              </div>
+
+              <div class="blog-card-btn mt-auto pt-2">
+                {% if project.project_url %}
+                  <a href="{{ project.project_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">Live Demo</a>
+                {% else %}
+                  <a href="{% url 'project_detail' project.slug %}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12 text-center">
+          <p class="text-muted">No projects available at the moment.</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</section>
 {% endblock %}
