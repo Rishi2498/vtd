@@ -14,10 +14,10 @@
       <!-- Main Featured Image -->
       {% if project.image %}
       <div class="blog-card-thumb mb-4">
-        <img 
-          class="w-100 rounded shadow-sm" 
-          src="{{ project.image.url }}" 
-          alt="{{ project.title }}" 
+        <img
+          class="w-100 rounded shadow-sm"
+          src="{{ project.image.url }}"
+          alt="{{ project.title }}"
           loading="lazy"
         >
       </div>
@@ -25,8 +25,13 @@
 
       <!-- Project Description -->
       <div class="postbox-details-text mb-45">
-        {% if project.description %}
-          <p>{{ project.description|linebreaksbr }}</p>
+        {% if project.short_description %}
+          <p>{{ project.short_description|linebreaks }}</p>
+        {% endif %}
+      </div>
+       <div class="postbox-details-text mb-45">
+        {% if project.detailed_description  %}
+          <p>{{ project.detailed_description |linebreaks }}</p>
         {% endif %}
       </div>
 
@@ -41,9 +46,9 @@
       <!-- Project Link -->
       {% if project.project_url %}
       <div class="postbox-details-text mb-45">
-        <a 
-          href="{{ project.project_url }}" 
-          target="_blank" 
+        <a
+          href="{{ project.project_url }}"
+          target="_blank"
           class="btn project-btn"
         >
           Visit Project
@@ -59,11 +64,11 @@
         <div class="gallery-grid">
           {% for img in images %}
           <div class="gallery-img-wrapper">
-            <img 
-              class="img-fluid rounded hover-zoom shadow-sm" 
-              src="{{ img.image.url }}" 
-              alt="{{ img.alt_text|default:project.title }}" 
-              title="{{ img.alt_text }}" 
+            <img
+              class="img-fluid rounded hover-zoom shadow-sm"
+              src="{{ img.image.url }}"
+              alt="{{ img.alt_text|default:project.title }}"
+              title="{{ img.alt_text }}"
               loading="lazy"
             >
           </div>
