@@ -1,40 +1,34 @@
-Light Theme Blog List Styles
-
+/* === Global Styles === */
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
   background-color: #f9f9f9;
+  color: #333;
   margin: 0;
   padding: 0;
-  color: #333;
 }
 
-/* === Section Wrapper === */
-.page-section {
-  padding: 80px 20px;
+/* === Container === */
+.container {
   max-width: 1240px;
   margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.section-header h1 {
-  font-size: 2.6rem;
-  text-align: center;
-  color: #ff5722;
-  margin-bottom: 60px;
-  font-weight: 800;
-  letter-spacing: 1px;
+/* === Page Section === */
+.page-section {
+  padding: 60px 0;
 }
 
-/* === Blog Grid === */
+/* === Blog Grid Layout === */
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 32px;
 }
 
 /* === Blog Card === */
 .blog-card {
   background-color: #ffffff;
-  
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
@@ -53,7 +47,7 @@ body {
 /* === Blog Image === */
 .blog-card-thumb {
   width: 100%;
-  height: 280px;
+  height: 200px;
   overflow: hidden;
   background-color: #f1f1f1;
 }
@@ -71,7 +65,7 @@ body {
 
 /* === Blog Content === */
 .blog-card-content {
-  padding: 24px 26px;
+  padding: 20px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -79,12 +73,13 @@ body {
 }
 
 .blog-card-title a {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #222;
   text-decoration: none;
   line-height: 1.4;
-  transition: color 0.3s;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 .blog-card-title a:hover {
@@ -103,36 +98,9 @@ body {
   font-size: 0.85rem;
   color: #888;
   display: flex;
-  gap: 6px;
+  justify-content: space-between;
   align-items: center;
   margin-top: auto;
-}
-
-/* === Author Section === */
-.blog-card-user {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.blog-author-thumb img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 12px;
-  border: 2px solid #ff5722;
-}
-
-/* === Category Tag === */
-.blog-card-tag {
-  display: inline-block;
-  font-size: 13px;
-  color: #fff;
-  background-color: #ff5722;
-  padding: 5px 12px;
-  border-radius: 20px;
-  margin-bottom: 10px;
 }
 
 /* === Read More Button === */
@@ -147,21 +115,26 @@ body {
   text-decoration: underline;
 }
 
-/* === Responsive === */
-@media (max-width: 768px) {
-  .blog-card-thumb {
-    height: 180px;
+/* === Responsive Padding Fix for Containers === */
+@media (max-width: 600px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .blog-card-content {
+    padding: 16px;
   }
 
   .blog-card-title a {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .blog-card-content p {
     font-size: 0.95rem;
   }
 
-  .page-section {
-    padding: 60px 16px;
+  .blog-card-thumb {
+    height: 180px;
   }
 }
